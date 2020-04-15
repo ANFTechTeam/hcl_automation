@@ -92,6 +92,18 @@ variable "alert_percent" {
     default         = "85"
 }
 
+variable "alert_email_azapp" {
+    description     = "email address for Azure App alerting"
+}
+
+variable "alert_email_address" {
+    description     = "email address for email alerting"
+}
+
+variable "alert_phone_sms" {
+    description     = "mobile phone number for SMS alerting"
+}
+
 variable "standard_tags" {
     description     = "tags to be applied to all resources"
     default         = {

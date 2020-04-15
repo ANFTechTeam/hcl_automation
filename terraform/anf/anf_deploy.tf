@@ -71,24 +71,24 @@ resource "azurerm_netapp_volume" "netapp_volume" {
 # https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html
 # Customer will likely already have an action group
 resource "azurerm_monitor_action_group" "main" {
-  name                = "SeanLuceActionTF"
+  name                = "AlertActionGroup"
   resource_group_name = var.rg
-  short_name          = "SLActionTF"
+  short_name          = "AAG"
 
   azure_app_push_receiver {
       name            = "PushtoAzureApp"
-      email_address   = "sean.luce@netapp.com"
+      email_address   = var.alert_email_azapp
   }
 
   email_receiver {
       name            = "SendtoEmail"
-      email_address   = "sean.luce@netapp.com"
+      email_address   = var.alert_email_address
   }
 
   sms_receiver {
     name              = "SendtoSMS"
     country_code      = "1"
-    phone_number      = "12488808086"
+    phone_number      = var.alert_phone_sms
   }
 }
 
